@@ -1,27 +1,16 @@
 .nav {
-  font-family: 'Raleway', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 21px;
-  letter-spacing: 0.02em;
-  color: $color-black;
-  display: inline-block;
-
   &__list {
     display: flex;
     align-items: center;
   }
 
   &__item {
-    cursor: pointer;
-    & + & {
-      margin-left: 45px;
+    padding: 0 22.5px;
+    &:first-child{
+      padding-left: 0;
     }
-
-    &.is-active {
-      font-weight: bold;
-      color: $color-azure;
+    &:last-child{
+      padding-right: 0;
     }
   }
 }

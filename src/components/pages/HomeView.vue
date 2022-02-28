@@ -1,35 +1,32 @@
 <template lang="pug">
   div
     header-component
-    navigation-component
-    call-component
-    button-component(
-      view="primary"
-      size="l"
-    ) Открыть магазин
-    button-component(
-      view="primary-ghost"
-    ) Открыть магазин
-    button-component(
-      view="ghost"
-    ) Подробнее о бренде
-    button-component(
-      view="secondary-ghost"
-      size="m"
-    ) Пальто
-    button-component(
-      view="secondary"
-      size="s"
-    ) L
-
-    tabs-component(
-      :tabs="tabs"
-    )
+    //button-component(
+    //  view="primary"
+    //  size="l"
+    //) Открыть магазин
+    //button-component(
+    //  view="primary-ghost"
+    //) Открыть магазин
+    //button-component(
+    //  view="ghost"
+    //) Подробнее о бренде
+    //button-component(
+    //  view="secondary-ghost"
+    //  size="m"
+    //) Пальто
+    //button-component(
+    //  view="secondary"
+    //  size="s"
+    //) L
+    //
+    //tabs-component(
+    //  :tabs="tabs"
+    //)
 </template>
 
 <script>
-import Header from '@/components/blanks/Header.vue'
-import Call from '@/components/UI/Call.vue'
+import Header from '@/components/sections/Header.vue'
 import Button from '@/components/UI/Button.vue'
 import Link from '@/components/UI/Link.vue'
 import Tabs from '@/components/UI/Tabs.vue'
@@ -53,7 +50,6 @@ export default {
 
   components: {
     'header-component': Header,
-    'call-component': Call,
     'button-component': Button,
     'link-component': Link,
     'tabs-component': Tabs,

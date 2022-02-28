@@ -1,3 +1,5 @@
+1. Вопрос по поводу иконки в call-components
+
 # vue-project
 
 ## Project setup

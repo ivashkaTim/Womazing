@@ -13,12 +13,14 @@ body{
 .container{
   max-width: 1600px;
   padding: 0 245px;
+  margin: 0 auto;
 }
 
-@import "@/assets/styles/blanks/header";
+@import "@/assets/styles/sections/header";
 @import "@/assets/styles/blanks/navigation";
 @import "@/assets/styles/UI/logo";
 @import "@/assets/styles/UI/call";
 @import "@/assets/styles/UI/button";
 @import "@/assets/styles/UI/link";
 @import "@/assets/styles/UI/tabs";
+@import "@/assets/styles/UI/bag";

@@ -1,20 +1,28 @@
 <template lang="pug">
   .b-nav
-    ul.__list
-      li.__item.is-active Главная
-      li.__item Магазин
-      li.__item О бренде
-      li.__item Контакты
+    .__list
+      link-components(
+        v-for="item in nav"
+        :key="item.id"
+        view="secondary"
+        size="s"
+      ).__item {{item.title}}
 </template>
 
 <script>
+import Link from "@/components/UI/Link";
+
 export default {
-  props: {},
+  props: {
+    nav: Array,
+  },
   data() {
     return {}
   },
   methods: {},
   computed: {},
-  components: {},
+  components: {
+    'link-components': Link,
+  },
 }
 </script>
