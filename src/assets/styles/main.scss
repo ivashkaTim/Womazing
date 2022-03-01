@@ -9,6 +9,7 @@ body{
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   color: $color-black;
+  background-color: $color-white;
 }
 .container{
   max-width: 1600px;
@@ -18,9 +19,13 @@ body{
 
 @import "@/assets/styles/sections/header";
 @import "@/assets/styles/blanks/navigation";
+@import "@/assets/styles/blanks/card-product";
 @import "@/assets/styles/UI/logo";
 @import "@/assets/styles/UI/call";
 @import "@/assets/styles/UI/button";
 @import "@/assets/styles/UI/link";
 @import "@/assets/styles/UI/tabs";
 @import "@/assets/styles/UI/bag";
+@import "@/assets/styles/pages/home-pages";
+@import "@/assets/styles/pages/shop-pages";
+@import "@/assets/styles/pages/product-pages";

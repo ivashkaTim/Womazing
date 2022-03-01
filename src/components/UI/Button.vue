@@ -1,6 +1,7 @@
 <template lang="pug">
   button(
     :class="classes"
+    v-on:click="$emit('click')"
   ).b-button
     slot
 </template>

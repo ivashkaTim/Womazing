@@ -1,0 +1,54 @@
+.main {
+  padding-top: 51px;
+
+  &__container {
+    display: flex;
+  }
+
+  &__left, &__right {
+    width: 50%;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    padding-top: 145px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 55px;
+    line-height: 110%;
+    letter-spacing: 0.02em;
+    color: $color-black;
+    margin-bottom: 45px;
+  }
+
+  &__text {
+    text-align: right;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 0.02em;
+    color: $color-black;
+    margin-right: 160px;
+    margin-bottom: 52px;
+  }
+
+  &__button {
+    margin-right: 160px;
+    margin-left: 150px;
+    padding: 0;
+  }
+
+  &__right {
+    position: relative;
+    padding-left: 100px;
+  }
+
+  &__image {
+    position: absolute;
+    width: 410px;
+    height: 646px;
+   
+  }
+}

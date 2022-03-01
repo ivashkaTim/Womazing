@@ -1,12 +1,10 @@
 <template lang="pug">
-  .b-header
+  header.b-header
     .container.__container
       logo-component.__logo
-      navigation-component.__nav(
-        :nav="nav"
-      )
+      navigation-component.__nav
       call-component.__call(
-        image = true
+        :image = "true"
       )
       bag-component.__bag(
         :count = "count"
@@ -24,12 +22,6 @@ export default {
   props: {},
   data() {
     return {
-      nav: [
-        {id: 1, title: 'Главная', page: 'main'},
-        {id: 2, title: 'Магазин', page: 'shop'},
-        {id: 3, title: 'О бренде', page: 'about'},
-        {id: 4, title: 'Контакты', page: 'contacts'},
-      ],
       count: 5,
     }
   },
