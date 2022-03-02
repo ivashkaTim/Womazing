@@ -7,7 +7,8 @@
         :image = "true"
       )
       bag-component.__bag(
-        :count = "count"
+        :count = "itemsCount"
+
       )
 
 </template>
@@ -17,6 +18,7 @@ import Logo from '@/components/UI/Logo.vue'
 import Navigation from '@/components/blanks/Navigation.vue'
 import Call from "@/components/UI/Call";
 import Bag from "@/components/UI/Bag";
+import {mapGetters} from "vuex";
 
 export default {
   props: {},
@@ -25,8 +27,13 @@ export default {
       count: 5,
     }
   },
-  methods: {},
-  computed: {},
+  methods: {
+  },
+  computed: {
+    ...mapGetters({
+      itemsCount:'cart/itemsCount'
+    })
+  },
   components: {
     'logo-component': Logo,
     'navigation-component': Navigation,

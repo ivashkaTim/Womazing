@@ -11,19 +11,17 @@
 
 <script>
 import Link from "@/components/UI/Link";
-import routes from '@/router/routes.js'
 
 
 export default {
   props: {},
   data() {
     return {
-      routes
     }
   },
   methods: {
     isActiveRoute(name) {
-      return this.$route.name === name
+      return this.$route.name === name || this.$route.name === 'product' && name === 'products'
     },
     getLinkView(name) {
       return this.isActiveRoute(name) ? 'primary' : 'secondary'

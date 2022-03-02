@@ -5,6 +5,9 @@
 *{
   box-sizing: border-box;
 }
+html{
+  scrollbar-gutter: stable;
+}
 body{
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
@@ -20,6 +23,7 @@ body{
 @import "@/assets/styles/sections/header";
 @import "@/assets/styles/blanks/navigation";
 @import "@/assets/styles/blanks/card-product";
+@import "@/assets/styles/blanks/table-products";
 @import "@/assets/styles/UI/logo";
 @import "@/assets/styles/UI/call";
 @import "@/assets/styles/UI/button";
@@ -29,3 +33,4 @@ body{
 @import "@/assets/styles/pages/home-pages";
 @import "@/assets/styles/pages/shop-pages";
 @import "@/assets/styles/pages/product-pages";
+@import "@/assets/styles/pages/cart-pages";

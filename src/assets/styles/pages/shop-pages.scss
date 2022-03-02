@@ -1,7 +1,7 @@
 .shop{
-  padding-top: 190px;
+  padding-top: 100px;
   &__info{
-    margin-bottom: 200px;
+    margin-bottom: 100px;
   }
   &__title {
     font-weight: 500;
@@ -21,11 +21,12 @@
   &__tabs{
     display: flex;
     align-items: center;
-    margin-bottom: 180px;
+    margin-bottom: 50px;
   }
   &__tab{
     & + & {
       margin-left: 10px;
     }
   }
+
 }

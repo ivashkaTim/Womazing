@@ -3,6 +3,7 @@ import ShopPages from '@/components/pages/ShopPages'
 import AboutPages from '@/components/pages/AboutPages'
 import ContactsPages from '@/components/pages/ContactsPages'
 import ProductPages from "@/components/pages/ProductPages";
+import CartPages from "@/components/pages/CartPages";
 
 
 export default [
@@ -15,8 +16,8 @@ export default [
         }
     },
     {
-        path: '/shop',
-        name: 'shop',
+        path: '/products',
+        name: 'products',
         component: ShopPages,
         meta: {
             title: 'Магазин'
@@ -40,7 +41,12 @@ export default [
     },
     {
         path: '/products/:id',
-        name: 'products',
+        name: 'product',
         component: ProductPages,
+    },
+    {
+        path: '/cart',
+        name: 'cart',
+        component: CartPages,
     },
 ]

@@ -1,0 +1,15 @@
+.cart {
+  padding-top: 100px;
+
+  &__title {
+    font-weight: 500;
+    font-size: 55px;
+    line-height: 110%;
+    letter-spacing: 0.02em;
+    color: $color-black;
+  }
+
+  &__top {
+    margin-bottom: 50px;
+  }
+}

@@ -28,7 +28,6 @@ export default {
       const classes = [
         `button--${this.view}`,
         `button--size-${this.size}`,
-
       ]
       return classes
     }
