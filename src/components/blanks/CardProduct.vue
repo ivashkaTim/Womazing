@@ -20,9 +20,6 @@ export default {
   },
   methods: {},
   computed: {
-    logProduct(){
-      console.log(this.product)
-    }
   },
   components: {},
 }

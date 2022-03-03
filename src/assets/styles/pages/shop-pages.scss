@@ -1,32 +1,23 @@
-.shop{
+.shop {
   padding-top: 100px;
-  &__info{
-    margin-bottom: 100px;
+
+  &__info {
+    margin-bottom: 50px;
   }
+
   &__title {
-    font-weight: 500;
-    font-size: 55px;
-    line-height: 110%;
-    letter-spacing: 0.02em;
-    color: $color-black;
-    margin-bottom: 45px;
   }
-  &__list{
+
+  &__list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 30px;
     row-gap: 65px;
   }
-  &__tabs{
-    display: flex;
-    align-items: center;
+
+  &__tabs {
     margin-bottom: 50px;
-  }
-  &__tab{
-    & + & {
-      margin-left: 10px;
-    }
   }
 
 }

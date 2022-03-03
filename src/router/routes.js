@@ -1,16 +1,18 @@
-import HomePages from '@/components/pages/HomePages'
-import ShopPages from '@/components/pages/ShopPages'
-import AboutPages from '@/components/pages/AboutPages'
-import ContactsPages from '@/components/pages/ContactsPages'
-import ProductPages from "@/components/pages/ProductPages";
-import CartPages from "@/components/pages/CartPages";
+import Home from '@/components/pages/Home'
+import Shop from '@/components/pages/Shop'
+import About from '@/components/pages/About'
+import Contacts from '@/components/pages/Contacts'
+import Product from "@/components/pages/Product";
+import Cart from "@/components/pages/Cart";
+import Checkout from "@/components/pages/Checkout";
 
 
 export default [
     {
         path: '/',
         name: 'home',
-        component: HomePages,
+        component: Home
+        ,
         meta: {
             title: 'Главная'
         }
@@ -18,7 +20,8 @@ export default [
     {
         path: '/products',
         name: 'products',
-        component: ShopPages,
+        component: Shop
+        ,
         meta: {
             title: 'Магазин'
         }
@@ -26,7 +29,8 @@ export default [
     {
         path: '/about',
         name: 'about',
-        component: AboutPages,
+        component: About
+        ,
         meta: {
             title: 'О бренде'
         }
@@ -34,7 +38,8 @@ export default [
     {
         path: '/contacts',
         name: 'contacts',
-        component: ContactsPages,
+        component: Contacts
+        ,
         meta: {
             title: 'Контакты'
         }
@@ -42,11 +47,18 @@ export default [
     {
         path: '/products/:id',
         name: 'product',
-        component: ProductPages,
+        component: Product
+        ,
     },
     {
         path: '/cart',
         name: 'cart',
-        component: CartPages,
+        component: Cart
+        ,
+    },
+    {
+        path: '/checkout',
+        name: 'checkout',
+        component: Checkout,
     },
 ]

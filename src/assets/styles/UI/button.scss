@@ -1,10 +1,10 @@
-
 .button {
   cursor: pointer;
   font-size: 17px;
   line-height: 138.9%;
   text-align: center;
   letter-spacing: 0.02em;
+
   &--primary {
     border: 1px solid $color-azure;
     color: $color-white;
@@ -14,6 +14,7 @@
       border: 1px solid $color-light-azure;
       background-color: $color-light-azure;
     }
+
     &-ghost {
       border: 1px solid $color-azure;
       color: $color-azure;
@@ -25,6 +26,7 @@
       }
     }
   }
+
   &--secondary {
     background-color: $color-black;
     color: $color-white;
@@ -36,12 +38,14 @@
       color: $color-black;
       border: 1px solid $color-black;
       font-weight: 500;
-      &:hover{
+
+      &:hover {
         background-color: $color-black;
         color: $color-white;
       }
     }
   }
+
   &--ghost {
     color: $color-azure;
     background-color: inherit;
@@ -67,7 +71,6 @@
     }
   }
 
-
   &--size {
     &-l {
       height: 68px;
@@ -87,5 +90,11 @@
       height: 41px;
       line-height: 41px;
     }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
   }
 }

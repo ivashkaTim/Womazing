@@ -1,6 +1,5 @@
 <template lang="pug">
   .b-nav
-    .__list
       link-components(
         v-for="route in filterRoutes"
         :view="getLinkView(route.name)"

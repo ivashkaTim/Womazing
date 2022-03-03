@@ -1,16 +1,17 @@
 <template lang="pug">
-  router-link.b-logo(
-    :to="to"
+  component.b-title(
+    :is="tag"
   )
-    .__image
-      img(src='@/assets/images/icons/logo.svg')
-    p.__title Womazing
+    slot
 </template>
 
 <script>
 export default {
   props: {
-    to: String
+    tag: {
+      default: 'h2',
+      type: String,
+    },
   },
   data() {
     return {}

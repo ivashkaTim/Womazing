@@ -12,6 +12,14 @@
   &__nav{
     margin-right: 170px;
   }
+  &__call{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $color-black;
+  }
   &__bag{
     margin-left: auto;
   }

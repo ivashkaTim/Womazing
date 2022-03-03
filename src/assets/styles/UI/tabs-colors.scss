@@ -1,0 +1,19 @@
+.tabs-colors {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &__button {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+
+    & + & {
+      margin-left: 14px;
+    }
+    &.is-active {
+      border-color: $color-black;
+    }
+  }
+}

@@ -10,7 +10,7 @@
     )
       td
         button.__button-delete(
-          @click="deleteProduct(item)"
+          @click="deleteSelectedProduct(item)"
         )
         .__image
           img(
@@ -21,7 +21,8 @@
       td $ {{item.price}}
       td
         input(
-          @input="item.count"
+          v-on:change="setSelectedProductCount(item, $event.target.value)"
+          :value="item.count"
         )
       td {{item.size}}
       td {{item.color}}
@@ -36,14 +37,36 @@ export default {
     itemInfo: Array,
   },
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     ...mapActions({
       deleteProduct: 'cart/deleteProduct',
-      changeCount: 'cart/changeCount'
+      setProductCount: 'cart/setProductCount'
     }),
+    getItem(item, count) {
+      return {
+        id: item.id,
+        size: item.size,
+        color: item.color,
+        ...count && {
+          count: +count
+        }
+      }
+    },
+    deleteSelectedProduct(item) {
+      const product = this.getItem(item)
+
+      this.deleteProduct(product)
+    },
+
+    setSelectedProductCount(item, count) {
+      const product = this.getItem(item, count)
+
+      this.setProductCount(product)
+    }
+
+
   },
   computed: {
     ...mapGetters({

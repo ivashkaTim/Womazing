@@ -1,11 +1,10 @@
 <template lang="pug">
   .b-tabs
-    .__list
       button-component.__item(
-        view = 'secondary-ghost'
-        size='m'
         v-for="tab in tabs"
-        :key="tab.id"
+        :view = "isActive(tab)"
+        v-on:click="changeActiveTab(tab)"
+        :size='size'
       ) {{tab.name}}
 </template>
 
@@ -14,12 +13,26 @@ import Button from '@/components/UI/Button.vue'
 
 export default {
   props: {
-    tabs: Array
+    tabs: Array,
+    size:{
+      default:'m',
+      type: String
+    }
   },
   data() {
-    return {}
+    return {
+      activeTab: 0
+    }
   },
-  methods: {},
+  methods: {
+    isActive(tab) {
+      return this.activeTab === tab.id ? 'secondary' : 'secondary-ghost'
+    },
+    changeActiveTab(tab) {
+      this.activeTab = tab.id
+      this.$emit('click',tab)
+    }
+  },
   computed: {},
   components: {
     'button-component': Button,

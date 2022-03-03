@@ -1,12 +1,22 @@
 <template lang="pug">
   component(
-    v-bind="attrs"
+    v-bind="linkAttrs"
+    :class="classes"
   ).b-link
+    .__image(
+      v-if="icon"
+    )
+      img(
+        :src="iconSrc"
+      )
     slot
 </template>
 
 <script>
+import linkOptions from "@/mixins/utils/link-options";
+
 export default {
+  mixins: [linkOptions],
   props: {
     tag: {
       default: 'router-link',
@@ -20,7 +30,6 @@ export default {
       default: 'l',
       type: String
     },
-    href: String,
     icon: String
   },
   data() {
@@ -35,18 +44,10 @@ export default {
       ]
       return classes
     },
-    attrs() {
-      return {
-        ...this.tag === 'router-link' && {
-          to: this.href
-        },
-        ...this.tag === 'a' && {
-          href: this.href
-        },
-        class: this.classes,
-        is: this.tag
-      }
-    },
+    iconSrc() {
+      return `/images/icons/${this.icon}.svg`
+    }
+
   },
   components: {},
 }

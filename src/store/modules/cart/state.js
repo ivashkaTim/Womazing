@@ -1,3 +1,6 @@
 export const state = () => ({
-        items:[]
+    items: [],
+    discount: 0,
+
+
 })

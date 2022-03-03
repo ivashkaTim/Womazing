@@ -2,17 +2,16 @@
   section.b-shop
     .container.__container
       .__info
-        h2.__title Магазин
+        title-component.__title(
+          tag="h2"
+        ) Магазин
       .__products
-        .__tabs
-          button-component.__tab(
-            v-for="category in categories"
-            :view="getActiveCategory(category.id)"
-            @click="changeActiveTab(category.id)"
-            size="m"
-          ) {{category.name}}
+        tabs-component.__tabs(
+          :tabs="categories",
+          @click="changeActiveTab"
+        )
         .__list
-          card-component(
+          card-component.__product(
             v-for="product in filterProducts"
             :product="product"
             v-on:click="$router.push(`products/${product.id}`)"
@@ -24,6 +23,8 @@
 import Button from '@/components/UI/Button.vue'
 import {mapGetters} from 'vuex'
 import CardProduct from "@/components/blanks/CardProduct";
+import Title from "@/components/UI/Title";
+import Tabs from "@/components/UI/Tabs";
 
 
 export default {
@@ -34,12 +35,8 @@ export default {
     }
   },
   methods: {
-    getActiveCategory(id) {
-      return this.activeCategory === id ? 'secondary' : 'secondary-ghost'
-    },
-
-    changeActiveTab(id) {
-      this.activeCategory = id
+    changeActiveTab(tab) {
+      this.activeCategory = tab.id
     }
   },
   computed: {
@@ -52,8 +49,10 @@ export default {
     },
   },
   components: {
+    'title-component': Title,
     'button-component': Button,
     'card-component': CardProduct,
+    'tabs-component': Tabs
   },
 }
 </script>

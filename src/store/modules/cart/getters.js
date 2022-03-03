@@ -5,4 +5,14 @@ export const getters = {
     items(state) {
         return state.items
     },
+    discountCost(state,getters) {
+        return getters.cost - (getters.cost * state.discount / 100)
+    },
+
+    cost(state) {
+        return state.items.reduce(
+            (total, item) => total + (item.count * item.price),
+            0)
+    },
+
 }

@@ -1,0 +1,5 @@
+export const SET_PRODUCT_COUNT = "SET_PRODUCT_COUNT"
+export const DELETE_PRODUCT = "DELETE_PRODUCT"
+export const ADD_PRODUCT = "ADD_PRODUCT"
+export const CLEAR_ITEMS = "CLEAR_ITEMS"
+export const CHECK_PROMO = "CHECK_PROMO"
