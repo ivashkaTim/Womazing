@@ -1,0 +1,28 @@
+.table-total {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  color: $color-black;
+
+  td {
+    padding-top: 10px;
+    text-align: left;
+
+  }
+
+  &__title, &__total {
+    font-size: 20px;
+  }
+
+  &__title {
+    border-bottom: 1px solid $color-black;
+  }
+
+  &__total {
+    background-color: #F1EADC;
+  }
+}

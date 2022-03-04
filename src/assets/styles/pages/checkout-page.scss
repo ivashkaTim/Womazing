@@ -1,0 +1,44 @@
+.checkout {
+  padding-top: 100px;
+
+  &__title {
+    margin-bottom: 150px;
+  }
+
+  &__left, &__right {
+    width: 50%;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__form {
+    & + & {
+      margin-top: 80px;
+    }
+  }
+
+  &__table {
+    margin-bottom: 50px;
+  }
+
+  &__subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 140%;
+    letter-spacing: 0.02em;
+    color: $color-black;
+  }
+
+  &__radio {
+    margin: 20px 0;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

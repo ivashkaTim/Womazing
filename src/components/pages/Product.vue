@@ -70,7 +70,7 @@ export default {
         {
           id: 0,
           color: '#927876',
-          name: 'Browm'
+          name: 'Brown'
         },
         {
           id: 1,
