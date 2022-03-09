@@ -1,31 +1,30 @@
 <template lang="pug">
-  .b-input
+  .b-input(
+    :class="{'is-error': error}"
+    )
     input.__value(
       :placeholder="placeholder"
       :type="type"
-      v-on:input="$emit('input', $event.target.value)"
-      :class="{'is-error': error}"
+      v-on:input="onInputEmit($event)"
 
     )
 </template>
 
-<script>
-export default {
-  props: {
-    type: String,
-    placeholder: {
-      default: '',
-      type: String,
-    },
-    value: String,
-    error: Boolean
+<script lang="ts">
 
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  components: {},
+import {Component, Prop, Emit, Vue} from "vue-property-decorator";
+
+@Component
+export default class Input extends Vue {
+  @Prop() type!: string
+  @Prop({default: ''}) placeholder!: string
+  @Prop() value!: string
+  @Prop() error!: boolean
+
+  @Emit('input')
+  onInputEmit(e: InputEvent) {
+    return (e.target as HTMLInputElement).value
+  }
 }
+
 </script>

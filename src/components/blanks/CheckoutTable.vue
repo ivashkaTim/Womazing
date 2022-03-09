@@ -24,20 +24,17 @@
       td ${{discountCost}}
 </template>
 
-<script>
+<script lang="ts">
 
-export default {
-  props: {
-    tableTitles: Array,
-    items: Array,
-    cost: [Number, String],
-    discountCost: [Number, String]
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  components: {},
+import {Component, Prop, Vue} from "vue-property-decorator";
+import {CartProduct} from "@/store/modules/cart/mutations";
+
+@Component
+export default class CheckoutTable extends Vue{
+  @Prop() tableTitles!: string[]
+  @Prop() items!: CartProduct[]
+  @Prop() cost!: number | string
+  @Prop() discountCost!: number | string
 }
+
 </script>

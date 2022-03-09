@@ -7,16 +7,11 @@
     p.__title Womazing
 </template>
 
-<script>
-export default {
-  props: {
-    to: String
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  components: {},
+<script lang="ts">
+import {Component, Prop, Vue} from "vue-property-decorator";
+
+@Component
+export default class Logo extends Vue{
+  @Prop() to!: string
 }
 </script>

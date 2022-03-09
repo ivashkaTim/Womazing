@@ -29,50 +29,64 @@
       td $ {{item.count * item.price}}
 </template>
 
-<script>
+<script lang="ts">
 import {mapActions, mapGetters} from "vuex";
+import {Component, Prop, Vue} from "vue-property-decorator";
+import {Action, Getter} from "@/decorators";
+import {CartProduct} from "@/store/modules/cart/mutations";
 
-export default {
-  props: {
-    itemInfo: Array,
-  },
-  data() {
-    return {}
-  },
-  methods: {
-    ...mapActions({
-      deleteProduct: 'cart/deleteProduct',
-      setProductCount: 'cart/setProductCount'
-    }),
-    getItem(item, count) {
-      return {
-        id: item.id,
-        size: item.size,
-        color: item.color,
-        ...count && {
-          count: +count
-        }
-      }
-    },
-    deleteSelectedProduct(item) {
-      const product = this.getItem(item)
+@Component
+export default class CartTable extends Vue {
 
-      this.deleteProduct(product)
-    },
-
-    setSelectedProductCount(item, count) {
-      const product = this.getItem(item, count)
-
-      this.setProductCount(product)
-    }
+  @Prop() itemInfo!: string[]
+  @Action('cart/deleteProduct') deleteProduct!: CartProduct
+  @Action('cart/setProductCount') setProductCount!: CartProduct
+  @Getter("cart/items") items!: CartProduct[]
 
 
-  },
-  computed: {
-    ...mapGetters({
-      items: "cart/items"
-    })
-  },
-  components: {},
 }
+
+// export default {
+//   props: {
+//     itemInfo: Array,
+//   },
+//   data() {
+//     return {}
+//   },
+//   methods: {
+//     ...mapActions({
+//       deleteProduct: 'cart/deleteProduct',
+//       setProductCount: 'cart/setProductCount'
+//     }),
+//     getItem(item, count) {
+//       return {
+//         id: item.id,
+//         size: item.size,
+//         color: item.color,
+//         ...count && {
+//           count: +count
+//         }
+//       }
+//     },
+//     deleteSelectedProduct(item) {
+//       const product = this.getItem(item)
+//
+//       this.deleteProduct(product)
+//     },
+//
+//     setSelectedProductCount(item, count) {
+//       const product = this.getItem(item, count)
+//
+//       this.setProductCount(product)
+//     }
+//
+//
+//   },
+//   computed: {
+//     ...mapGetters({
+//       items: "cart/items"
+//     })
+//   },
+//   components: {},
+// }
 </script>

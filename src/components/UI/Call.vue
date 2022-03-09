@@ -12,23 +12,18 @@
     ).__number +7 (495) 823-54-12
 </template>
 
-<script>
-import Link from "@/components/UI/Link";
+<script lang="ts">
+import Link from "@/components/UI/Link.vue";
+import {Component, Prop, Vue} from "vue-property-decorator";
 
-export default {
-  props: {
-    image: {
-      default: true,
-      type: Boolean,
-    }
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  components: {
+@Component({
+    components: {
     'link-components': Link,
-  },
+  }
+})
+
+export default class Call extends Vue{
+  @Prop({default:true}) image!: boolean
 }
+
 </script>

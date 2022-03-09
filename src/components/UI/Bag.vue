@@ -10,24 +10,17 @@
       slot
 </template>
 
-<script>
+<script lang="ts">
 
-import Link from "@/components/UI/Link";
+import Link from "@/components/UI/Link.vue";
+import {Component, Prop, Vue} from "vue-property-decorator";
 
-export default {
-  props: {
-    count: {
-      default: 0,
-      type: Number,
-    }
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
+@Component({
   components: {
     'link-component': Link
-  },
+  }
+})
+export default class Bag extends Vue{
+  @Prop({default: 0}) count!: number
 }
 </script>

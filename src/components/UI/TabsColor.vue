@@ -8,26 +8,32 @@
     )
 </template>
 
-<script>
-export default {
-  props: {
-    list:Array,
-  },
-  data() {
-    return {
-      activeItem: 0
-    }
-  },
-  methods: {
-    isActive(item) {
-      return this.activeItem === item.id ? 'is-active' : null
-    },
-    changeActiveItem(item) {
-      this.activeItem = item.id
-      this.$emit('click',item)
-    }
-  },
-  computed: {},
-  components: {},
+<script lang="ts">
+
+
+import {Component, Emit, Prop, Vue} from "vue-property-decorator";
+import {TabColorItem} from "@/types/components/UI/TabsColor";
+
+@Component
+export default class TabsColor extends Vue {
+  @Prop() list!: TabColorItem[]
+
+  @Emit('click')
+  clickEmit(item: TabColorItem) {
+    return item
+  }
+  activeItem: number = 0
+
+  changeActiveItem(item: TabColorItem) {
+    this.activeItem = item.id
+    this.clickEmit(item)
+  }
+
+  isActive(item: TabColorItem) {
+    return this.activeItem === item.id ? 'is-active' : null
+  }
+
+
 }
+
 </script>

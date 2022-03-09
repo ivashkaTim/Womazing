@@ -1,4 +1,21 @@
-export const state = () => ({
+export type Category = {
+    id: number,
+    name: string
+}
+
+export type Product = {
+    id: number,
+    title: string,
+    price: number,
+    image: string,
+    category: Category
+}
+
+export type StateProducts = {
+    products: Product[]
+}
+
+export const state = (): StateProducts => ({
     products: [{
         id: 1, title: 'Футболка USA', price: 130, image: 't-shirt/t-shirt', category: {
             id: 1, name: "Футболки"
@@ -47,8 +64,5 @@ export const state = () => ({
         id: 12, title: 'Толстовка RUSSIA', price: 160, image: 'hoody/hoody', category: {
             id: 4, name: "Толстовки"
         }
-    },],
-
-
-
+    },]
 })

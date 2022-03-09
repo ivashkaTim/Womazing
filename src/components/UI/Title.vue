@@ -5,19 +5,13 @@
     slot
 </template>
 
-<script>
-export default {
-  props: {
-    tag: {
-      default: 'h2',
-      type: String,
-    },
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  components: {},
+<script lang="ts">
+
+import {Component, Prop, Vue} from "vue-property-decorator";
+
+@Component
+export default class Title extends Vue{
+  @Prop({default: 'h2'}) tag!: string
 }
+
 </script>

@@ -14,17 +14,14 @@
         p.__text {{item.text}}
 </template>
 
-<script>
-export default {
-  props: {
-    items: Object,
-    activeRadio: Number
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  components: {},
+<script lang="ts">
+import {Component, Prop, Vue} from "vue-property-decorator";
+import {RadioItem} from "@/types/components/UI/Radio";
+
+@Component
+export default class Radio extends Vue{
+  @Prop() items!: Record<string, RadioItem>
+  @Prop() activeRadio!: number
 }
+
 </script>

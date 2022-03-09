@@ -1,10 +1,12 @@
-import Home from '@/components/pages/Home'
-import Shop from '@/components/pages/Shop'
-import About from '@/components/pages/About'
-import Contacts from '@/components/pages/Contacts'
-import Product from "@/components/pages/Product";
-import Cart from "@/components/pages/Cart";
-import Checkout from "@/components/pages/Checkout";
+import Home from '@/components/pages/Home.vue'
+import Shop from '@/components/pages/Shop.vue'
+import About from '@/components/pages/About.vue'
+import Contacts from '@/components/pages/Contacts.vue'
+import Product from "@/components/pages/Product.vue";
+import Cart from "@/components/pages/Cart.vue";
+import Checkout from "@/components/pages/Checkout.vue";
+import {RouteConfig} from "vue-router";
+
 
 
 export default [
@@ -61,4 +63,4 @@ export default [
         name: 'checkout',
         component: Checkout,
     },
-]
+] as RouteConfig[]

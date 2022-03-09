@@ -1,5 +1,5 @@
 <template lang="pug">
-  component(
+  a(
     v-bind="linkAttrs"
     :class="classes"
   ).b-link
@@ -12,43 +12,30 @@
     slot
 </template>
 
-<script>
-import linkOptions from "@/mixins/utils/link-options";
+<script lang="ts">
 
-export default {
-  mixins: [linkOptions],
-  props: {
-    tag: {
-      default: 'router-link',
-      type: String
-    },
-    view: {
-      default: 'secondary',
-      type: String
-    },
-    size: {
-      default: 'l',
-      type: String
-    },
-    icon: String
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {
-    classes() {
-      const classes = [
-        `link--${this.view}`,
-        `link--size-${this.size}`,
-      ]
-      return classes
-    },
-    iconSrc() {
-      return `/images/icons/${this.icon}.svg`
-    }
+import {Component, Mixins, Prop, Vue} from "vue-property-decorator";
+import LinkOptions from "@/mixins/utils/link-options";
 
-  },
-  components: {},
+@Component
+export default class Link extends Mixins(LinkOptions) {
+
+  @Prop({default: 'secondary'}) view!: string
+  @Prop({default: 'l'}) size!: string
+  @Prop() icon!: string
+
+  get classes() {
+    const classes = [
+      `link--${this.view}`,
+      `link--size-${this.size}`,
+    ]
+    return classes
+  }
+
+  get iconSrc() {
+    return `/images/icons/${this.icon}.svg`
+  }
+
 }
+
 </script>

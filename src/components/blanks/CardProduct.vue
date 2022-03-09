@@ -5,22 +5,19 @@
     .__image
       img(
         :src="`images/shop/${product.image}.png`"
-        )
+      )
     h3.__title {{product.title}}
     p.__price $ {{product.price}}
 </template>
 
-<script>
-export default {
-  props: {
-    product: Object
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {
-  },
-  components: {},
+<script lang="ts">
+
+import {Component, Prop, Vue} from "vue-property-decorator";
+import {Product} from "@/store/modules/products/state";
+
+@Component
+export default class CardProduct extends Vue {
+  @Prop() product!: Product
 }
+
 </script>

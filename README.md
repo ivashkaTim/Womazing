@@ -8,6 +8,9 @@
 8. переделать form в итогах
 9. vue-property-decorator https://github.com/kaorun343/vue-property-decorator
 
+
+1. В input 'is-error'
+
 # vue-project
 
 ## Project setup

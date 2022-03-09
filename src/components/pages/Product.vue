@@ -29,16 +29,18 @@
           button-component(
             view="primary"
             size="l"
-            @click="sendProductInfo"
+            @click="sendProductInfo(product.id)"
           ) Добавить в корзину
 </template>
 
 <script>
+
+
 import {mapActions} from 'vuex'
-import Button from "@/components/UI/Button";
-import Title from "@/components/UI/Title";
-import Tabs from "@/components/UI/Tabs";
-import TabsColor from "@/components/UI/TabsColor";
+import Button from "@/components/UI/Button.vue";
+import Title from "@/components/UI/Title.vue";
+import Tabs from "@/components/UI/Tabs.vue";
+import TabsColor from "@/components/UI/TabsColor.vue";
 
 export default {
   props: {},
@@ -106,9 +108,10 @@ export default {
     changeProductColors(item) {
       this.selectedColor = item.name
     },
-    sendProductInfo() {
+    sendProductInfo(id) {
       const cartItem = {
         ...this.product,
+        id,
         count: this.count,
         color: this.selectedColor,
         size: this.selectedSize

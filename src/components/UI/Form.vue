@@ -12,32 +12,28 @@
       )
 </template>
 
-<script>
-import Input from "@/components/UI/Input";
+<script lang="ts">
+import Input from "@/components/UI/Input.vue";
+import {Component, Prop, Vue} from "vue-property-decorator";
+import {Field} from "@/types/components/UI/Form";
 
-export default {
-  props: {
-    title: String,
-    fields: Object,
-  },
-  data() {
-    return {}
-  },
-  methods: {
-      onInput(key, value){
-        this.$emit('update:fields', {
-          ...this.fields,
-        [key]:{
-            ...this.fields[key],
-            value
-        }
-
-        })
-      },
-  },
-  computed: {},
+@Component({
   components: {
     'input-component': Input
-  },
+  }
+})
+export default class Form extends Vue {
+  @Prop() title!: string
+  @Prop() fields!: Record<string, Field>
+
+  onInput(key: string | number, value: string) {
+    this.$emit('update:fields', {
+      ...this.fields,
+      [key]: {
+        ...this.fields[key],
+        value
+      }
+    })
+  }
 }
 </script>

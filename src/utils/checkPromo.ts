@@ -1,4 +1,11 @@
-const discounts =[
+export type Promo ={
+    id:number,
+    promo:string,
+    price: number
+}
+
+
+const discounts: Promo[] =[
     {
         id: 1,
         promo: "Скидка",
@@ -17,7 +24,7 @@ const discounts =[
 ]
 
 
-export function checkPromo (promoCode) {
+export function checkPromo (promoCode:string) {
     const discount = discounts.find(item => item.promo === promoCode)
 
     return discount ? discount.price : null

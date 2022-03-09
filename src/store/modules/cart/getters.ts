@@ -1,4 +1,9 @@
-export const getters = {
+import {GetterTree} from "vuex";
+import {StateCart} from "@/store/modules/cart/state";
+import {StateRoot} from "@/store/types";
+
+export const getters:GetterTree<StateCart, StateRoot> = {
+
     itemsCount(state) {
         return state.items.reduce((total, item) => total + item.count, 0)
     },
