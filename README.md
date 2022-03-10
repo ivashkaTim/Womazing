@@ -8,9 +8,7 @@
 8. переделать form в итогах
 9. vue-property-decorator https://github.com/kaorun343/vue-property-decorator
 
-
-1. В input 'is-error'
-
+10. доработать карточку продуктов, написаьт метод который будет удалять карточку если она есть на страницу
 # vue-project
 
 ## Project setup

@@ -14,7 +14,7 @@
           card-component.__product(
             v-for="product in filterProducts"
             :product="product"
-            v-on:click="$router.push(`products/${product.id}`)"
+            v-on:click="$router.push(`product/${product.id}`)"
           )
 </template>
 

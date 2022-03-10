@@ -1,7 +1,9 @@
 <template lang="pug">
   #app
     header-component
-    router-view
+    router-view(
+    :key="$route.path"
+    )
 </template>
 <script>
 import Header from '@/components/sections/Header.vue'

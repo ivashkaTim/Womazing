@@ -8,12 +8,13 @@
         v-on:input="onInput(key,$event)"
         :type="field.type"
         :placeholder="field.placeholder"
-        :error="field.error"
+        :error.sync="field.error"
       )
 </template>
 
 <script lang="ts">
 import Input from "@/components/UI/Input.vue";
+
 import {Component, Prop, Vue} from "vue-property-decorator";
 import {Field} from "@/types/components/UI/Form";
 

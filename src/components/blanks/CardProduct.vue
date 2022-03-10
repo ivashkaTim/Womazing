@@ -4,7 +4,7 @@
   )
     .__image
       img(
-        :src="`images/shop/${product.image}.png`"
+        :src="`/images/shop/${product.image}.png`"
       )
     h3.__title {{product.title}}
     p.__price $ {{product.price}}

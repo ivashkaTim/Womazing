@@ -9,10 +9,11 @@
         )
       .__bottom
         .__discount
-          input.__discount-input(
+          input-component.__discount-input(
             v-model="promoCode"
             @input="onInput"
             placeholder="Введите купон"
+            :error.sync="promoError"
           )
           button-component.__discount-button(
             view="primary-ghost"
@@ -47,16 +48,19 @@
 <script lang="ts">
 import CartTable from "@/components/blanks/CartTable.vue";
 import Button from "@/components/UI/Button.vue";
+import Input from "@/components/UI/Input.vue";
 
 import {Component, Vue} from "vue-property-decorator";
 import {Action, Getter} from "@/decorators";
 import {ActionCartCheckPromo, ActionCartClearItems} from "@/store/modules/cart/actions";
 import {CartProduct} from "@/store/modules/cart/mutations";
 
+
 @Component({
   components: {
     'cart-table-component': CartTable,
     'button-component': Button,
+    'input-component': Input
   }
 })
 

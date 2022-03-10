@@ -42,8 +42,10 @@ import Radio from "@/components/UI/Radio.vue";
 import Button from "@/components/UI/Button.vue";
 
 import {Component, Vue} from "vue-property-decorator";
-import {Getter} from "@/decorators";
+import {Action, Getter} from "@/decorators";
 import {CartProduct} from "@/store/modules/cart/mutations";
+import {Field} from "@/types/components/UI/Form";
+import {ActionCartClearItems} from "@/store/modules/cart/actions";
 
 @Component({
   components: {
@@ -55,6 +57,8 @@ import {CartProduct} from "@/store/modules/cart/mutations";
   },
 })
 export default class Checkout extends Vue {
+
+  @Action('cart/clearItems') clearItems!:ActionCartClearItems
 
   @Getter("cart/items") items!: CartProduct[]
   @Getter("cart/cost") cost!: number
@@ -152,27 +156,30 @@ export default class Checkout extends Vue {
     this.activeRadio = id
   }
 
+  updateField(callback: (field: Field) => void) {
+    Object.entries(this.forms).forEach(([formName, formFields]) => {
+      Object.entries(formFields.fields).forEach(([fieldName, field]) => {
+        callback(field)
+      })
+    })
+  }
 
   validateForm() {
     let isError = false
-    Object.entries(this.forms).forEach(([formName, formFields]) => {
-      Object.entries(formFields.fields).forEach(([fieldName, field]) => {
-
-        if (!(field.regExp.test(field.value))) {
-          field.error = true
-          isError = true
-        }
-      })
+    this.updateField(field => {
+      if (!(field.regExp.test(field.value))) {
+        field.error = true
+        isError = true
+      }
     })
     return isError
   }
 
-  clearValue(){
-    Object.entries(this.forms).forEach(([formName, formFields]) => {
-      Object.entries(formFields.fields).forEach(([fieldName, field]) => {
-        field.value = ''
-      })
+  clearValue() {
+    this.updateField(field => {
+      field.value = ''
     })
+
   }
 
   sendForm() {
@@ -196,6 +203,7 @@ export default class Checkout extends Vue {
     if (!isError) {
       console.log(form)
       this.clearValue()
+      this.clearItems()
 
     }
   }

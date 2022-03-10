@@ -20,12 +20,11 @@ export default class Button extends Mixins(LinkOptions) {
   @Prop({default: false}) disabled!: boolean
 
   get classes() {
-    const classes = [
+    return [
       `button--${this.view}`,
       `button--size-${this.size}`,
       this.disabled && 'disabled'
     ]
-    return classes
   }
 }
 

@@ -31,6 +31,17 @@
             size="l"
             @click="sendProductInfo(product.id)"
           ) Добавить в корзину
+
+      .__colection
+        title-component.__subtitle(
+          size="m"
+        ) Новая коллекция
+        .__collection-wrapper
+          card-component.__product(
+            v-for="item in newCollectionProducts"
+            :product="item"
+            v-on:click="$router.push(`/product/${item.id}`)"
+          )
 </template>
 
 <script lang="ts">
@@ -40,27 +51,32 @@ import Title from "@/components/UI/Title.vue";
 import Tabs from "@/components/UI/Tabs.vue";
 import TabsColor from "@/components/UI/TabsColor.vue";
 
-import {Component, Vue} from "vue-property-decorator";
-import {Action} from "@/decorators";
+import {Component, Vue, Watch} from "vue-property-decorator";
+import {Action, Getter} from "@/decorators";
 import {ActionProductActiveProduct} from "@/store/modules/products/actions";
 import {ActionCartAddProduct} from "@/store/modules/cart/actions";
 import {Product} from "@/store/modules/products/state";
 import {Maybe} from "@/types/helpers";
 import {Color, Size} from "@/types/components/pages/Product";
 import {CartProduct} from "@/store/modules/cart/mutations";
+import getArrayRandomNumbers from "@/utils/numberGenerator";
+import CardProduct from "@/components/blanks/CardProduct.vue";
 
 @Component({
   components: {
     'title-component': Title,
     'button-component': Button,
     'tabs-component': Tabs,
-    'tabs-colors-component': TabsColor
+    'tabs-colors-component': TabsColor,
+    'card-component': CardProduct,
   }
 })
 export default class ProductActive extends Vue {
   @Action('products/activeProduct') activeProduct!: ActionProductActiveProduct
   @Action('cart/addProduct') addProduct!: ActionCartAddProduct
+  @Getter('products/products') products!: Product[]
 
+  newCollectionProducts: Product[] = []
   product: Maybe<Product> = null
   selectedSize: Maybe<string> = null
   selectedColor: Maybe<string> = null
@@ -111,6 +127,20 @@ export default class ProductActive extends Vue {
     this.product = await this.activeProduct(this.$route.params.id) ?? null
     this.selectedSize = this.sizes[0].name
     this.selectedColor = this.colors[0].name
+    this.getNewCollectionProducts()
+  }
+
+  getNewCollectionProducts() {
+    const min = this.products[0].id
+    const max = this.products.length
+
+    getArrayRandomNumbers(max, min, 3).forEach(num => {
+      this.products.forEach(product => {
+        if (num === product.id) {
+          this.newCollectionProducts.push(product)
+        }
+      })
+    })
   }
 
   changeProductSize(tab: Size) {
@@ -133,6 +163,7 @@ export default class ProductActive extends Vue {
       this.addProduct(cartItem)
     }
   }
+
 }
 
 </script>

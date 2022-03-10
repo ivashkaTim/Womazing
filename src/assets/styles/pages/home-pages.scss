@@ -1,10 +1,10 @@
 .main {
   padding-top: 51px;
 
-  &__container {
+  &__top{
     display: flex;
+    margin-bottom: 300px;
   }
-
   &__left, &__right {
     width: 50%;
   }
@@ -49,6 +49,12 @@
     position: absolute;
     width: 410px;
     height: 646px;
-   
+  }
+  &__subtitle{
+    margin-bottom: 90px;
+  }
+  &__collection-wrapper{
+    display: flex;
+    justify-content: space-between;
   }
 }
