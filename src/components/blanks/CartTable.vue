@@ -30,63 +30,28 @@
 </template>
 
 <script lang="ts">
-import {mapActions, mapGetters} from "vuex";
 import {Component, Prop, Vue} from "vue-property-decorator";
 import {Action, Getter} from "@/decorators";
 import {CartProduct} from "@/store/modules/cart/mutations";
+import {ActionCartDeleteProduct, ActionCartSetProductCount} from "@/store/modules/cart/actions";
 
 @Component
 export default class CartTable extends Vue {
 
   @Prop() itemInfo!: string[]
-  @Action('cart/deleteProduct') deleteProduct!: CartProduct
-  @Action('cart/setProductCount') setProductCount!: CartProduct
+  @Action('cart/deleteProduct') deleteProduct!: ActionCartDeleteProduct
+  @Action('cart/setProductCount') setProductCount!: ActionCartSetProductCount
   @Getter("cart/items") items!: CartProduct[]
 
 
+
+    deleteSelectedProduct(item: CartProduct) {
+      this.deleteProduct(item)
+    }
+
+    setSelectedProductCount(item: CartProduct, count: number) {
+      this.setProductCount({...item, count})
+    }
 }
 
-// export default {
-//   props: {
-//     itemInfo: Array,
-//   },
-//   data() {
-//     return {}
-//   },
-//   methods: {
-//     ...mapActions({
-//       deleteProduct: 'cart/deleteProduct',
-//       setProductCount: 'cart/setProductCount'
-//     }),
-//     getItem(item, count) {
-//       return {
-//         id: item.id,
-//         size: item.size,
-//         color: item.color,
-//         ...count && {
-//           count: +count
-//         }
-//       }
-//     },
-//     deleteSelectedProduct(item) {
-//       const product = this.getItem(item)
-//
-//       this.deleteProduct(product)
-//     },
-//
-//     setSelectedProductCount(item, count) {
-//       const product = this.getItem(item, count)
-//
-//       this.setProductCount(product)
-//     }
-//
-//
-//   },
-//   computed: {
-//     ...mapGetters({
-//       items: "cart/items"
-//     })
-//   },
-//   components: {},
-// }
 </script>

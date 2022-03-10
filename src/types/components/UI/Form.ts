@@ -3,5 +3,5 @@ export type Field = {
     placeholder: string,
     value:string,
     error: boolean,
-    redExp: RegExp
+    regExp: RegExp,
 }

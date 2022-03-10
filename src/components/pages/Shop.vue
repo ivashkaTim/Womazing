@@ -16,43 +16,39 @@
             :product="product"
             v-on:click="$router.push(`products/${product.id}`)"
           )
-
 </template>
 
-<script>
+<script lang="ts">
 import Button from '@/components/UI/Button.vue'
-import {mapGetters} from 'vuex'
-import CardProduct from "@/components/blanks/CardProduct";
-import Title from "@/components/UI/Title";
-import Tabs from "@/components/UI/Tabs";
+import CardProduct from "@/components/blanks/CardProduct.vue";
+import Title from "@/components/UI/Title.vue";
+import Tabs from "@/components/UI/Tabs.vue";
 
+import {Component, Vue} from "vue-property-decorator";
+import {Getter} from "@/decorators";
+import {Category} from "@/types/components/pages/Shop";
+import {Product} from "@/store/modules/products/state";
 
-export default {
-  props: {},
-  data() {
-    return {
-      activeCategory: 0,
-    }
-  },
-  methods: {
-    changeActiveTab(tab) {
-      this.activeCategory = tab.id
-    }
-  },
-  computed: {
-    ...mapGetters({
-      categories: 'products/categories',
-      products: 'products/products',
-    }),
-    filterProducts() {
-      return this.activeCategory === 0 ? this.products : this.products.filter(product => product.category.id === this.activeCategory)
-    },
-  },
+@Component({
   components: {
     'title-component': Title,
     'button-component': Button,
     'card-component': CardProduct,
     'tabs-component': Tabs
-  },
+  }
+})
+export default class Shop extends Vue {
+  @Getter('products/categories') categories!: Category[]
+  @Getter('products/products') products!: Product[]
+
+  activeCategory: number = 0
+
+  changeActiveTab(tab: Category) {
+    this.activeCategory = tab.id
+  }
+
+  get filterProducts() {
+    return this.activeCategory === 0 ? this.products : this.products.filter(product => product.category.id === this.activeCategory)
+  }
 }
 </script>

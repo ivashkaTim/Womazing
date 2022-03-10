@@ -33,102 +33,107 @@
           ) Добавить в корзину
 </template>
 
-<script>
+<script lang="ts">
 
-
-import {mapActions} from 'vuex'
 import Button from "@/components/UI/Button.vue";
 import Title from "@/components/UI/Title.vue";
 import Tabs from "@/components/UI/Tabs.vue";
 import TabsColor from "@/components/UI/TabsColor.vue";
 
-export default {
-  props: {},
-  data() {
-    return {
-      product: null,
-      sizes: [
-        {
-          id: 0,
-          name: 'S'
-        },
-        {
-          id: 1,
-          name: 'M'
-        },
-        {
-          id: 2,
-          name: 'L'
-        },
-        {
-          id: 3,
-          name: 'XL'
-        }
-      ],
-      count: 1,
-      selectedSize: null,
-      selectedColor: null,
-      colors: [
-        {
-          id: 0,
-          color: '#927876',
-          name: 'Brown'
-        },
-        {
-          id: 1,
-          color: '#D4D4D4',
-          name: 'Gray'
-        },
-        {
-          id: 2,
-          color: '#FD9696',
-          name: 'Pink'
-        },
-        {
-          id: 3,
-          color: '#FDC796',
-          name: 'Gold'
-        },
-      ]
-    }
-  },
-  async created() {
-    this.product = await this.activeProduct(this.$route.params.id)
-    this.selectedSize = this.sizes[0].name
-    this.selectedColor = this.colors[0].name
-  },
-  methods: {
-    ...mapActions({
-      activeProduct: 'products/activeProduct',
-      addProduct: 'cart/addProduct'
-    }),
-    changeProductSize(tab) {
-      this.selectedSize = tab.name
-    },
-    changeProductColors(item) {
-      this.selectedColor = item.name
-    },
-    sendProductInfo(id) {
-      const cartItem = {
-        ...this.product,
-        id,
-        count: this.count,
-        color: this.selectedColor,
-        size: this.selectedSize
-      }
-      this.addProduct(cartItem)
-    },
+import {Component, Vue} from "vue-property-decorator";
+import {Action} from "@/decorators";
+import {ActionProductActiveProduct} from "@/store/modules/products/actions";
+import {ActionCartAddProduct} from "@/store/modules/cart/actions";
+import {Product} from "@/store/modules/products/state";
+import {Maybe} from "@/types/helpers";
+import {Color, Size} from "@/types/components/pages/Product";
+import {CartProduct} from "@/store/modules/cart/mutations";
 
-  },
-  computed: {},
+@Component({
   components: {
     'title-component': Title,
     'button-component': Button,
     'tabs-component': Tabs,
     'tabs-colors-component': TabsColor
-  },
-}
-</script>
-<style lang="scss">
+  }
+})
+export default class ProductActive extends Vue {
+  @Action('products/activeProduct') activeProduct!: ActionProductActiveProduct
+  @Action('cart/addProduct') addProduct!: ActionCartAddProduct
 
-</style>
+  product: Maybe<Product> = null
+  selectedSize: Maybe<string> = null
+  selectedColor: Maybe<string> = null
+  count: number = 1
+  sizes: Size[] = [
+    {
+      id: 0,
+      name: 'S'
+    },
+    {
+      id: 1,
+      name: 'M'
+    },
+    {
+      id: 2,
+      name: 'L'
+    },
+    {
+      id: 3,
+      name: 'XL'
+    }
+  ]
+  colors: Color[] = [
+    {
+      id: 0,
+      color: '#927876',
+      name: 'Brown'
+    },
+    {
+      id: 1,
+      color: '#D4D4D4',
+      name: 'Gray'
+    },
+    {
+      id: 2,
+      color: '#FD9696',
+      name: 'Pink'
+    },
+    {
+      id: 3,
+      color: '#FDC796',
+      name: 'Gold'
+    },
+  ]
+
+
+  async created() {
+    this.product = await this.activeProduct(this.$route.params.id) ?? null
+    this.selectedSize = this.sizes[0].name
+    this.selectedColor = this.colors[0].name
+  }
+
+  changeProductSize(tab: Size) {
+    this.selectedSize = tab.name
+  }
+
+  changeProductColors(item: Color) {
+    this.selectedColor = item.name
+  }
+
+  sendProductInfo(id: number) {
+    if (this.product) {
+      const cartItem: CartProduct = {
+        ...this.product,
+        id,
+        count: this.count,
+        color: this.selectedColor ?? '',
+        size: this.selectedSize ?? ''
+      }
+      this.addProduct(cartItem)
+    }
+  }
+}
+
+</script>
+

@@ -12,7 +12,7 @@ export enum CartEnum {
 
 export type CartProduct = Product & {
     color: string,
-    size: string
+    size: string,
     count: number
 }
 

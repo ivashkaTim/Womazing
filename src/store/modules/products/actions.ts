@@ -1,9 +1,12 @@
-import {ActionTree} from "vuex";
+import {ActionContext, ActionTree} from "vuex";
 import {StateProducts} from "@/store/modules/products/state";
-import {StateRoot} from "@/store/types";
+import {ActionType, StateRoot} from "@/store/types";
+
+const activeProduct = ({state}: ActionContext<StateProducts, StateRoot>, id: number | string) => {
+    return state.products.find(product => product.id === +(id))
+}
+export type ActionProductActiveProduct = ActionType<typeof activeProduct>
 
 export const actions: ActionTree<StateProducts, StateRoot> = {
-    activeProduct({state}, id: number | string) {
-        return state.products.find(product => product.id === +(id))
-    }
+    activeProduct,
 }
